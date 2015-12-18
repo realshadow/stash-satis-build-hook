@@ -1,0 +1,7 @@
+.satis-build-conf-error {
+    color: #f00;
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 5px;
+    display: block;
+}

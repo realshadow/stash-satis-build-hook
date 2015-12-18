@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<atlassian-plugin key="${project.groupId}.${project.artifactId}" name="${project.name}" plugins-version="2">
+  <plugin-info>
+	<description>${project.description}</description>
+	<version>${project.version}</version>
+	<vendor name="${project.organization.name}" url="${project.organization.url}"/>
+	<param name="plugin-icon">images/satisIcon.png</param>
+    <param name="plugin-logo">images/satisLogo.png</param>
+  </plugin-info>
+  <!-- add our i18n resource -->
+  <resource type="i18n" name="i18n" location="satis-build-plugin"/>
+
+	<rest name="Configuration Resource" i18n-name-key="configuration-resource.name" key="configuration-resource"
+		  path="/stash-satis" version="1.0">
+		<description>Rest resource for configuration</description>
+	</rest>
+
+    <component key="SatisBuildHook" class="sk.hts.stash.plugin.satis.hook.SatisBuildHook"/>
+    <component key="SatisNotifier" class="sk.hts.stash.plugin.satis.hook.SatisNotifier"/>
+    <component key="SatisEventListener" class="sk.hts.stash.plugin.satis.hook.SatisEventListener"/>
+
+    <component-import key="gitScm" interface="com.atlassian.stash.scm.git.GitScm"/>
+    <component-import key="requestFactory" interface="com.atlassian.sal.api.net.RequestFactory"/>
+	<component-import key="soyTemplateRenderer" interface="com.atlassian.soy.renderer.SoyTemplateRenderer"/>
+    <component-import key="applicationPropertiesService"
+					interface="com.atlassian.stash.server.ApplicationPropertiesService"/>
+    <component-import key="pluginSettingsFactory"
+					interface="com.atlassian.sal.api.pluginsettings.PluginSettingsFactory"/>
+
+    <web-item key="satis-config" name="Satis Config Link" section="atl.admin/admin-plugins-section" weight="500">
+        <description>${project.description}</description>
+        <label key="sk.satis-stash.satis-config.link"/>
+        <link>javascript: void();</link>
+        <styleClass>satis-config-link</styleClass>
+    </web-item>
+
+    <stash-resource key="satis-admin-soy" name="Admin Soy Templates">
+        <directory location="/views/admin/">
+          <exclude>/**/*-min.*</exclude>
+        </directory>
+        <context>internal.layout.admin</context>
+        <context>atl.admin</context>
+    </stash-resource>
+
+    <web-resource key="admin-resources" name="Admin Resources">
+        <resource type="download" name="satis-admin.js" location="js/satis-admin.js"/>
+        <resource type="download" name="satis-admin.css" location="css/satis-admin.css"/>
+        <context>internal.layout.admin</context>
+        <context>atl.admin</context>
+        <dependency>com.atlassian.auiplugin:ajs</dependency>
+        <dependency>${project.groupId}.${project.artifactId}:satis-admin-soy</dependency>
+    </web-resource>
+
+    <web-panel key="aui-message-area" weight="10" location="stash.notification.banner.header">
+        <resource name="view" type="velocity">
+            <![CDATA[
+                <div id="satis-stash-aui-message-bar"></div>
+            ]]>
+        </resource>
+    </web-panel>
+
+    <repository-hook name="Satis Build" i18n-name-key="satis-build-hook.name" key="satis-build-hook"
+                     class="sk.hts.stash.plugin.satis.hook.SatisBuildHook">
+        <description key="satis-build-hook.description"/>
+        <icon>images/satisLogo.png</icon>
+        <config-form name="Satis Build Hook Config" key="satis-build-hook-config">
+            <view>stash.config.example.hook.simple.formContents</view>
+            <directory location="/views/hook/">
+                <exclude>/**/*-min.*</exclude>
+            </directory>
+        </config-form>
+    </repository-hook>
+</atlassian-plugin>

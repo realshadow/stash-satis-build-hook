@@ -1,0 +1,19 @@
+{namespace satis.stash}
+
+/**
+ * @param apiUrl Satis api url
+ * @param context A String containing the context path
+ **/
+{template .dialog}
+<div>
+<form action="{$context}/rest/stash-satis/1.0/api" method="post" id="satis-hook-config" name="satis-hook-config" class="aui unsectioned">
+  <h2>Satis Config</h3>
+  <fieldset>
+    <div class="field-group">
+        <label for="satis-api-url">Satis Api Url <span class="aui-icon icon-required"></span></label>
+        <input name="apiurl" id="satis-api-url" type="text" class="text" value="{$apiUrl}" placeholder="Satis API endpoint" />
+    </div>
+  </fieldset>
+</form>
+</div>
+{/template}

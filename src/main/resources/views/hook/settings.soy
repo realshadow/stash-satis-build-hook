@@ -1,0 +1,26 @@
+{namespace stash.config.example.hook.simple}
+
+/**
+ * @param config
+ * @param? errors
+ */
+{template .formContents}
+     {call aui.form.radioField}
+        {param legendContent: stash_i18n('stash.web.stash.junit-enabled.button.description', 'Disable build on change?') /}
+        {param fields: [
+            [
+                'id': 'disable_build',
+                'value': 'true',
+                'labelText': stash_i18n('stash.web.stash.enable-ci-radio.button.label', 'Yes'),
+                'isChecked': $config['disable_build'] == 'true' or $config['disable_build'] == null ? true : false
+            ],
+            [
+                'id': 'disable_build',
+                'value': 'false',
+                'labelText': stash_i18n('stash.web.stash.enable-ci-radio.button.label', 'No'),
+                'isChecked': $config['disable_build'] == 'false' ? true : false
+            ]
+        ]/}
+        {param errorTexts: $errors ? $errors['disable_build'] : null /}
+      {/call}
+{/template}
