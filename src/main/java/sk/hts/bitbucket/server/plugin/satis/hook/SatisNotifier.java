@@ -1,12 +1,12 @@
-package sk.hts.stash.plugin.satis.hook;
+package sk.hts.bitbucket.server.plugin.satis.hook;
 
 import com.atlassian.sal.api.pluginsettings.PluginSettings;
 import com.atlassian.sal.api.pluginsettings.PluginSettingsFactory;
-import com.atlassian.stash.exception.CommandFailedException;
-import com.atlassian.stash.repository.Repository;
-import com.atlassian.stash.server.ApplicationPropertiesService;
-import com.atlassian.stash.scm.git.GitCommandBuilderFactory;
-import com.atlassian.stash.scm.git.GitScm;
+import com.atlassian.bitbucket.scm.CommandFailedException;
+import com.atlassian.bitbucket.repository.Repository;
+import com.atlassian.bitbucket.server.ApplicationPropertiesService;
+import com.atlassian.bitbucket.scm.git.command.GitCommandBuilderFactory;
+import com.atlassian.bitbucket.scm.git.GitScm;
 import com.google.gson.JsonIOException;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -31,7 +31,7 @@ import java.security.NoSuchAlgorithmException;
 
 public class SatisNotifier
 {
-    public static final String SETTINGS_KEY = "sk.hts.stash.plugin.satis.hook.stash-satis";
+    public static final String SETTINGS_KEY = "sk.bitbucket.server.plugin.satis.hook.bitbucket-satis";
     public static final String API_URL_KEY = "cp-url";
 
     public static final String REPOSITORY_EXTENSION = ".git";

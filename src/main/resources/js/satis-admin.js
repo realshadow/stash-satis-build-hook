@@ -55,8 +55,9 @@ AJS.$(document).ready(function ($) {
                 type: 'POST',
                 data: form.serialize(),
                 dataType: 'json',
+                headers: {"X-Atlassian-Token": "no-check"},
                 success: function (data) {
-                    AJS.messages.success('#satis-stash-aui-message-bar', {
+                    AJS.messages.success('#satis-bitbucket-aui-message-bar', {
                         title: 'Satis Control Panel URL has been saved successfully.'
                     });
                 },
@@ -64,7 +65,7 @@ AJS.$(document).ready(function ($) {
                     dialog.hide();
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
-                    AJS.messages.error('#satis-stash-aui-message-bar', {
+                    AJS.messages.error('#satis-bitbucket-aui-message-bar', {
                         title: 'Unable to save Satis Control Panel URL.',
                         body: textStatus
                     });
@@ -86,7 +87,7 @@ AJS.$(document).ready(function ($) {
 
     var initAndShow = function () {
         $.ajax({
-            url: AJS.contextPath() + '/rest/stash-satis/1.0/api',
+            url: AJS.contextPath() + '/rest/bitbucket-satis/1.0/api',
             type: 'GET',
             dataType: 'json',
             success: function (data) {
@@ -95,7 +96,7 @@ AJS.$(document).ready(function ($) {
                 dialog.show();
             },
             error: function (jqXHR, textStatus, errorThrown) {
-                AJS.messages.error('#satis-stash-aui-message-bar', {
+                AJS.messages.error('#satis-bitbucket-aui-message-bar', {
                     title: 'Could not load Satis Control Panel config.',
                     body: textStatus
                 });

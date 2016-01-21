@@ -1,4 +1,4 @@
-package sk.hts.stash.plugin.satis.hook.rest;
+package sk.hts.bitbucket.server.plugin.satis.hook.rest;
 
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 

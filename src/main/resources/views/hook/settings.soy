@@ -6,18 +6,18 @@
  */
 {template .formContents}
      {call aui.form.radioField}
-        {param legendContent: stash_i18n('stash.web.stash.junit-enabled.button.description', 'Disable build on change?') /}
+        {param legendContent: getText('Disable build on change?') /}
         {param fields: [
             [
                 'id': 'disable_build',
                 'value': 'true',
-                'labelText': stash_i18n('stash.web.stash.enable-ci-radio.button.label', 'Yes'),
+                'labelText': getText('Yes'),
                 'isChecked': $config['disable_build'] == 'true' or $config['disable_build'] == null ? true : false
             ],
             [
                 'id': 'disable_build',
                 'value': 'false',
-                'labelText': stash_i18n('stash.web.stash.enable-ci-radio.button.label', 'No'),
+                'labelText': getText('No'),
                 'isChecked': $config['disable_build'] == 'false' ? true : false
             ]
         ]/}

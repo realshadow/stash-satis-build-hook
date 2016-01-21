@@ -1,6 +1,6 @@
-package sk.hts.stash.plugin.satis.hook.rest;
+package sk.hts.bitbucket.server.plugin.satis.hook.rest;
 
-import sk.hts.stash.plugin.satis.hook.SatisNotifier;
+import sk.hts.bitbucket.server.plugin.satis.hook.SatisNotifier;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;

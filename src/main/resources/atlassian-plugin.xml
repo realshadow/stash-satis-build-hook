@@ -12,36 +12,36 @@
   <resource type="i18n" name="i18n" location="satis-build-plugin"/>
 
 	<rest name="Configuration Resource" i18n-name-key="configuration-resource.name" key="configuration-resource"
-		  path="/stash-satis" version="1.0">
+		  path="/bitbucket-satis" version="1.0">
 		<description>Rest resource for configuration</description>
 	</rest>
 
-    <component key="SatisBuildHook" class="sk.hts.stash.plugin.satis.hook.SatisBuildHook"/>
-    <component key="SatisNotifier" class="sk.hts.stash.plugin.satis.hook.SatisNotifier"/>
-    <component key="SatisEventListener" class="sk.hts.stash.plugin.satis.hook.SatisEventListener"/>
+    <component key="SatisBuildHook" class="sk.hts.bitbucket.server.plugin.satis.hook.SatisBuildHook"/>
+    <component key="SatisNotifier" class="sk.hts.bitbucket.server.plugin.satis.hook.SatisNotifier"/>
+    <component key="SatisEventListener" class="sk.hts.bitbucket.server.plugin.satis.hook.SatisEventListener"/>
 
-    <component-import key="gitScm" interface="com.atlassian.stash.scm.git.GitScm"/>
+    <component-import key="gitScm" interface="com.atlassian.bitbucket.scm.git.GitScm"/>
     <component-import key="requestFactory" interface="com.atlassian.sal.api.net.RequestFactory"/>
 	<component-import key="soyTemplateRenderer" interface="com.atlassian.soy.renderer.SoyTemplateRenderer"/>
     <component-import key="applicationPropertiesService"
-					interface="com.atlassian.stash.server.ApplicationPropertiesService"/>
+					interface="com.atlassian.bitbucket.server.ApplicationPropertiesService"/>
     <component-import key="pluginSettingsFactory"
 					interface="com.atlassian.sal.api.pluginsettings.PluginSettingsFactory"/>
 
     <web-item key="satis-config" name="Satis Config Link" section="atl.admin/admin-plugins-section" weight="500">
         <description>${project.description}</description>
-        <label key="sk.satis-stash.satis-config.link"/>
+        <label>Satis Build Configuration</label>
         <link>javascript: void();</link>
         <styleClass>satis-config-link</styleClass>
     </web-item>
 
-    <stash-resource key="satis-admin-soy" name="Admin Soy Templates">
+    <client-resource key="satis-admin-soy" name="Admin Soy Templates">
         <directory location="/views/admin/">
           <exclude>/**/*-min.*</exclude>
         </directory>
         <context>internal.layout.admin</context>
         <context>atl.admin</context>
-    </stash-resource>
+    </client-resource>
 
     <web-resource key="admin-resources" name="Admin Resources">
         <resource type="download" name="satis-admin.js" location="js/satis-admin.js"/>
@@ -61,7 +61,7 @@
     </web-panel>
 
     <repository-hook name="Satis Build" i18n-name-key="satis-build-hook.name" key="satis-build-hook"
-                     class="sk.hts.stash.plugin.satis.hook.SatisBuildHook">
+                     class="sk.hts.bitbucket.server.plugin.satis.hook.SatisBuildHook">
         <description key="satis-build-hook.description"/>
         <icon>images/satisLogo.png</icon>
         <config-form name="Satis Build Hook Config" key="satis-build-hook-config">

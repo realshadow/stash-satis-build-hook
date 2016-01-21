@@ -1,9 +1,9 @@
-package sk.hts.stash.plugin.satis.hook;
+package sk.hts.bitbucket.server.plugin.satis.hook;
 
-import com.atlassian.stash.hook.repository.*;
-import com.atlassian.stash.repository.*;
-import com.atlassian.stash.setting.*;
-import com.atlassian.stash.repository.Repository;
+import com.atlassian.bitbucket.hook.repository.*;
+import com.atlassian.bitbucket.repository.*;
+import com.atlassian.bitbucket.setting.*;
+import com.atlassian.bitbucket.repository.Repository;
 
 import java.util.Collection;
 

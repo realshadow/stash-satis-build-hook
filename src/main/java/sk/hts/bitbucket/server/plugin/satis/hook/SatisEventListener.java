@@ -1,8 +1,8 @@
-package sk.hts.stash.plugin.satis.hook;
+package sk.hts.bitbucket.server.plugin.satis.hook;
 
 import com.atlassian.event.api.EventListener;
-import com.atlassian.stash.event.RepositoryDeletedEvent;
-import com.atlassian.stash.event.RepositoryModifiedEvent;
+import com.atlassian.bitbucket.event.repository.RepositoryDeletedEvent;
+import com.atlassian.bitbucket.event.repository.RepositoryModifiedEvent;
 
 public class SatisEventListener {
     private final SatisNotifier satisNotifier;
